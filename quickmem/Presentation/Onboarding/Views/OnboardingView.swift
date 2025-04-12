@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @StateObject private var viewModel = OnboardingViewModel()
     @State private var currentPage = 0
+    @State private var showFirework = false
+    @State private var fireworkId = UUID()
+    @State private var isOnboardingCompleted = false
+
     
     private let pages = [
         (title: NSLocalizedString("welcome_title", comment: ""),
@@ -23,30 +28,45 @@ struct OnboardingView: View {
         NavigationStack {
             
             ZStack {
+                
                 LinearGradient(
                     colors: [Color.accentColor, Color.accentColor.opacity(0.1), Color.white],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
                 
-                VStack {
+                VStack(spacing: currentPage == pages.count - 1 ? 24 : 28) {
                     TabView(selection: $currentPage) {
-                        TabView(selection: $currentPage) {
+                        ForEach(0..<pages.count, id: \.self) { index in
+                            OnboardingPageView(
+                                title: pages[index].title,
+                                description: pages[index].description
+                            )
+                            .tag(index)
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .frame(height: 280)
+                    .animation(.easeInOut, value: currentPage)
+                    
+                    
+                    HStack(spacing: 8) {
                             ForEach(0..<pages.count, id: \.self) { index in
-                                OnboardingPageView(
-                                    title: pages[index].title,
-                                    description: pages[index].description
-                                )
-                                .tag(index)
+                                Circle()
+                                    .fill(index == currentPage ? Color.accentColor : Color.gray.opacity(0.4))
+                                    .frame(width: index == currentPage ? 12 : 8, height: index == currentPage ? 12 : 8)
+                                    .animation(.spring(), value: currentPage)
                             }
                         }
-                    }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                        .animation(.easeInOut, value: currentPage)
+                        .padding(.top, 12)
+
                     
                     HStack(spacing: 16) {
                         if currentPage == pages.count - 1 {
                             Button(action: {
                                 print("Onboarding completed")
+                                isOnboardingCompleted = true
+                                viewModel.setOnboardedStatus(isOnboardingCompleted)
                             }) {
                                 Text("get_started_button")
                                     .font(.title2)
@@ -81,38 +101,79 @@ struct OnboardingView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color.white.opacity(0.8), lineWidth: 2)
+                                        .stroke(Color.white.opacity(0.8), lineWidth: 1)
                                 )
                                 .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3)
                             }
                         }
                     }
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
+                    
+                    if currentPage < pages.count - 1 {
+                        Button(action: {
+                            currentPage = pages.count - 1
+                        }) {
+                            Text(LocalizedStringKey("skip_button"))
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.gray)
+                                .underline()
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                        }
+                        .background(Color.clear)
+                        .contentShape(RoundedRectangle(cornerRadius: 10))
+                        .padding(.top, 8)
+                    }
+
 
                 }.toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         HStack {
-                            Image(systemName: "bolt.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(Color.accentColor)
+                            Button(action: {
+                                let generator = UIImpactFeedbackGenerator(style: .medium)
+                                    generator.impactOccurred()
+                                
+                                fireworkId = UUID()
+                                withAnimation {
+                                    showFirework = true
+                                }
+                            }) {
+                                Image(systemName: "bolt.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                                    .padding(10)
+                                    .background(Color.accentColor)
+                                    .clipShape(Circle())
+                                    .foregroundStyle(.white)
+                            }
+
                             Text("app_name")
                                 .font(.headline)
                                 .foregroundStyle(Color.white)
                         }
                     }
-                    
-                    ToolbarItem(placement: .topBarTrailing) {
-                        if currentPage < pages.count - 1 {
-                            Button("skip_button") {
-                                currentPage = pages.count - 1
-                            }.foregroundStyle(.blue)
-                        }
-                    }
+
                 }
+                if showFirework {
+                      LottieView(animationName: "lottie_firework", loopMode: .playOnce)
+                        .id(fireworkId)
+                          .frame(width: 300, height: 300)
+                          .transition(.scale.combined(with: .opacity))
+                          .onAppear {
+                              DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                  withAnimation {
+                                      showFirework = false
+                                  }
+                              }
+                          }
+
+                  }
             }
+
+        }.fullScreenCover(isPresented: $isOnboardingCompleted) {
+            WelcomeView()
         }
     }
 }

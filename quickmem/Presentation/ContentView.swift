@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+    @StateObject private var viewModel = ContentViewModel()
     var body: some View {
-           if hasSeenOnboarding {
+        if viewModel.isOnboarded {
                WelcomeView()
            } else {
                OnboardingView()

@@ -12,7 +12,6 @@ struct OnboardingPageView: View {
     let description: String
     var body: some View {
         VStack(spacing: 20) {
-            Spacer()
             Text(title)
                 .font(.title2)
                 .fontWeight(.bold)
@@ -22,9 +21,10 @@ struct OnboardingPageView: View {
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
-            Spacer()
         }
-        .padding(.horizontal, 5)
+        .padding(.top, 30)
+        .padding(.bottom, 10)
+
     }
 }
 
