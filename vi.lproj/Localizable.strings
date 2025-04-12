@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  quickmem
+
+  Created by Nguyen Quang Minh on 4/12/25.
+  
+*/
+"app_name" = "QuickMem";
+
+"welcome_title" = "Chào mừng đến với QuickMem";
+"welcome_desc" = "QuickMem là ứng dụng flashcard giúp bạn học mọi thứ";
+
+"create_title" = "Tạo flashcard của riêng bạn";
+"create_desc" = "Bạn có thể tạo flashcard và chia sẻ với người khác";
+
+"learn_title" = "Học với phương pháp lặp lại ngắt quãng";
+"learn_desc" = "QuickMem dùng phương pháp lặp lại ngắt quãng để giúp bạn ghi nhớ tốt hơn";
+
+"next_button" = "Tiếp theo";
+"skip_button" = "Bỏ qua";
+"get_started_button" = "Bắt đầu";
+"app_name" = "QuickMem";
