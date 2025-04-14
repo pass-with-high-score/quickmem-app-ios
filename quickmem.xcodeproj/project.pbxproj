@@ -9,20 +9,36 @@
 /* Begin PBXBuildFile section */
 		4868F9A42DAAB2A40091869B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4868F9A22DAAB2A40091869B /* Localizable.strings */; };
 		4868F9AE2DAABDDE0091869B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4868F9AD2DAABDDE0091869B /* Lottie */; };
-		4868F9B02DAABE9B0091869B /* lottie_firework.json in Resources */ = {isa = PBXBuildFile; fileRef = 4868F9AF2DAABE9B0091869B /* lottie_firework.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4868F97C2DAA68DD0091869B /* quickmem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quickmem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4868F9A32DAAB2A40091869B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4868F9A52DAAB2EE0091869B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4868F9AF2DAABE9B0091869B /* lottie_firework.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lottie_firework.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4868FA502DAB649C0091869B /* Exceptions for "quickmem" folder in "quickmem" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4868F97B2DAA68DD0091869B /* quickmem */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4868F97E2DAA68DD0091869B /* quickmem */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4868FA502DAB649C0091869B /* Exceptions for "quickmem" folder in "quickmem" target */,
+			);
 			path = quickmem;
+			sourceTree = "<group>";
+		};
+		4868F9EE2DAB5DAD0091869B /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -42,10 +58,10 @@
 		4868F9732DAA68DD0091869B = {
 			isa = PBXGroup;
 			children = (
+				4868F9EE2DAB5DAD0091869B /* Resources */,
 				4868F9A22DAAB2A40091869B /* Localizable.strings */,
 				4868F97E2DAA68DD0091869B /* quickmem */,
 				4868F97D2DAA68DD0091869B /* Products */,
-				4868F9AF2DAABE9B0091869B /* lottie_firework.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +90,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4868F97E2DAA68DD0091869B /* quickmem */,
+				4868F9EE2DAB5DAD0091869B /* Resources */,
 			);
 			name = quickmem;
 			packageProductDependencies = (
@@ -126,7 +143,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4868F9B02DAABE9B0091869B /* lottie_firework.json in Resources */,
 				4868F9A42DAAB2A40091869B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +304,7 @@
 				DEVELOPMENT_TEAM = T9WGMY76XQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = quickmem/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = QuickMem;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -319,6 +336,7 @@
 				DEVELOPMENT_TEAM = T9WGMY76XQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = quickmem/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = QuickMem;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -11,7 +11,7 @@ import SwiftUI
 struct quickmemApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().globalFont()
         }
     }
 }

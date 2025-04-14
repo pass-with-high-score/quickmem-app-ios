@@ -7,16 +7,24 @@
 */
 "app_name" = "QuickMem";
 
+// Onboarding
 "welcome_title" = "Chào mừng đến với QuickMem";
 "welcome_desc" = "QuickMem là ứng dụng flashcard giúp bạn học mọi thứ";
-
 "create_title" = "Tạo flashcard của riêng bạn";
 "create_desc" = "Bạn có thể tạo flashcard và chia sẻ với người khác";
-
 "learn_title" = "Học với phương pháp lặp lại ngắt quãng";
 "learn_desc" = "QuickMem dùng phương pháp lặp lại ngắt quãng để giúp bạn ghi nhớ tốt hơn";
-
 "next_button" = "Tiếp theo";
 "skip_button" = "Bỏ qua";
 "get_started_button" = "Bắt đầu";
-"app_name" = "QuickMem";
+
+// Welcome
+"all_tools_title" = "Tất cả công cụ giúp học tập thành công\n";
+"in_one_app" = "trong một ứng dụng";
+"welcome_button_get_started" = "Bắt đầu miễn phí";
+"welcome_button_already_have_account" = "Đã có tài khoản?";
+"carousel_flashcard" = "📚 Flashcards thông minh – học nhanh, nhớ lâu!";
+"carousel_personalized_learning" = "🎯 Cá nhân hoá lộ trình học của bạn!";
+"carousel_smart_reminder" = "⏰ Nhắc nhở học tập thông minh hằng ngày!";
+"carousel_progress_tracking" = "📈 Theo dõi tiến độ học tập dễ dàng!";
+

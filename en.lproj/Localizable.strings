@@ -7,16 +7,23 @@
 */
 "app_name" = "QuickMem";
 
+// Onboarding
 "welcome_title" = "Welcome to QuickMem";
 "welcome_desc" = "QuickMem is a flashcard app that helps you learn anything";
-
 "create_title" = "Create your own flashcards";
 "create_desc" = "You can create your own flashcards and share them with others";
-
 "learn_title" = "Learn with spaced repetition";
 "learn_desc" = "QuickMem uses spaced repetition to help you remember what you learn";
-
 "next_button" = "Next";
 "skip_button" = "Skip";
 "get_started_button" = "Get started";
-"app_name" = "QuickMem";
+
+// Welcome
+"all_tools_title" = "All the tools for learning success\n";
+"in_one_app" = "in one app";
+"welcome_button_get_started" = "Get started for free";
+"welcome_button_already_have_account" = "Already have an account?";
+"carousel_flashcard" = "📚 Smart flashcards – learn fast, remember long!";
+"carousel_personalized_learning" = "🎯 Personalize your learning journey!";
+"carousel_smart_reminder" = "⏰ Smart daily study reminders!";
+"carousel_progress_tracking" = "📈 Easily track your learning progress!";

@@ -51,20 +51,19 @@ struct OnboardingView: View {
                     
                     
                     HStack(spacing: 8) {
-                            ForEach(0..<pages.count, id: \.self) { index in
-                                Circle()
-                                    .fill(index == currentPage ? Color.accentColor : Color.gray.opacity(0.4))
-                                    .frame(width: index == currentPage ? 12 : 8, height: index == currentPage ? 12 : 8)
-                                    .animation(.spring(), value: currentPage)
-                            }
+                        ForEach(0..<pages.count, id: \.self) { index in
+                            Circle()
+                                .fill(index == currentPage ? Color.accentColor : Color.gray.opacity(0.4))
+                                .frame(width: index == currentPage ? 12 : 8, height: index == currentPage ? 12 : 8)
+                                .animation(.spring(), value: currentPage)
                         }
-                        .padding(.top, 12)
-
+                    }
+                    .padding(.top, 12)
+                    
                     
                     HStack(spacing: 16) {
                         if currentPage == pages.count - 1 {
                             Button(action: {
-                                print("Onboarding completed")
                                 isOnboardingCompleted = true
                                 viewModel.setOnboardedStatus(isOnboardingCompleted)
                             }) {
@@ -125,14 +124,14 @@ struct OnboardingView: View {
                         .contentShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.top, 8)
                     }
-
-
+                    
+                    
                 }.toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         HStack {
                             Button(action: {
                                 let generator = UIImpactFeedbackGenerator(style: .medium)
-                                    generator.impactOccurred()
+                                generator.impactOccurred()
                                 
                                 fireworkId = UUID()
                                 withAnimation {
@@ -148,32 +147,32 @@ struct OnboardingView: View {
                                     .clipShape(Circle())
                                     .foregroundStyle(.white)
                             }
-
+                            
                             Text("app_name")
                                 .font(.headline)
                                 .foregroundStyle(Color.white)
                         }
                     }
-
+                    
                 }
                 if showFirework {
-                      LottieView(animationName: "lottie_firework", loopMode: .playOnce)
+                    LottieView(animationName: Lottie.firework, loopMode: .playOnce)
                         .id(fireworkId)
-                          .frame(width: 300, height: 300)
-                          .transition(.scale.combined(with: .opacity))
-                          .onAppear {
-                              DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                  withAnimation {
-                                      showFirework = false
-                                  }
-                              }
-                          }
-
-                  }
+                        .frame(width: 300, height: 300)
+                        .transition(.scale.combined(with: .opacity))
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    showFirework = false
+                                }
+                            }
+                        }
+                    
+                }
+            }.navigationDestination(isPresented: $isOnboardingCompleted) {
+                WelcomeView()
             }
-
-        }.fullScreenCover(isPresented: $isOnboardingCompleted) {
-            WelcomeView()
+            
         }
     }
 }
