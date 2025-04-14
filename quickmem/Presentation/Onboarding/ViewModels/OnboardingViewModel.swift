@@ -5,7 +5,7 @@
 //  Created by Nguyen Quang Minh on 4/12/25.
 //
 
-import SwiftUI
+import Foundation
 
 class OnboardingViewModel : ObservableObject {
     
