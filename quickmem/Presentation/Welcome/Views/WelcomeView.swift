@@ -14,7 +14,10 @@ struct WelcomeView: View {
         NavigationStack {
             ZStack {
                 LinearGradient(
-                    colors: [Color.accentColor, Color.accentColor.opacity(0.3), Color.white],
+                    colors: [
+                        Color.primaryColor, Color.primaryColor.opacity(0.3),
+                        Color.white,
+                    ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
@@ -31,86 +34,94 @@ struct WelcomeView: View {
                         .font(.firaSansExtraBold(size: 40))
                         .foregroundStyle(
                             LinearGradient(
-                                colors: [Color.white, Color.white.opacity(0.7)],
+                                colors: [
+                                    Color.white, Color.white.opacity(0.7),
+                                ],
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
                         )
 
-                    (
-                        Text("all_tools_title")
-                            .foregroundColor(.white)
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                        +
-                        Text("in_one_app")
-                            .foregroundColor(Color.premiumColor)
-                            .font(.title)
-                            .fontWeight(.bold)
-                    )
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(4)
-                    .padding(.horizontal, 32)
-                    .padding(.top, 8)
+                    (Text("all_tools_title")
+                        .foregroundColor(.white)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        + Text("in_one_app")
+                        .foregroundColor(Color.premiumColor)
+                        .font(.title)
+                        .fontWeight(.bold))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .padding(.horizontal, 32)
+                        .padding(.top, 8)
 
                     VerticalTextCarousel()
                         .padding(.top, 24)
 
-
                     Spacer()
-                    
-                    VStack (spacing: 16){
+
+                    VStack(spacing: 16) {
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 showSignup = true
                             }
                         }) {
-                                Text("welcome_button_get_started")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                    .frame(maxWidth: .infinity, minHeight: 50)
-                                    .background(Color.accentColor)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(Color.white.opacity(0.8), lineWidth: 2)
-                                    )
-                                    .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3)
-                                    .background(
-                                        Color.white.opacity(0.6)
-                                            .blur(radius: 10)
-                                            .background(.ultraThinMaterial)
-                                    )
+                            Text("welcome_button_get_started")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, minHeight: 50)
+                                .background(Color.primaryColor)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(
+                                            Color.white.opacity(0.8),
+                                            lineWidth: 2)
+                                )
+                                .shadow(
+                                    color: Color.black.opacity(0.3), radius: 5,
+                                    x: 0, y: 3
+                                )
+                                .background(
+                                    Color.white.opacity(0.6)
+                                        .blur(radius: 10)
+                                        .background(.ultraThinMaterial)
+                                )
 
-                            }
-                            .padding(.horizontal, 32)
-                        
+                        }
+                        .padding(.horizontal, 32)
+
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 showLogin = true
                             }
                         }) {
-                               Text("welcome_button_already_have_account")
-                                   .font(.title2)
-                                   .fontWeight(.bold)
-                                   .foregroundStyle(Color.accentColor)
-                                   .frame(maxWidth: .infinity, minHeight: 50)
-                                   .background(Color.white)
-                                   .clipShape(RoundedRectangle(cornerRadius: 20))
-                                   .overlay(
-                                       RoundedRectangle(cornerRadius: 20)
-                                           .stroke(Color.accentColor.opacity(0.8), lineWidth: 2)
-                                   )
-                                   .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 3)
-                                   .background(
-                                       Color.accentColor.opacity(0.6)
-                                           .blur(radius: 10)
-                                           .background(.ultraThinMaterial)
-                                   )
+                            Text("welcome_button_already_have_account")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color.primaryColor)
+                                .frame(maxWidth: .infinity, minHeight: 50)
+                                .background(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(
+                                            Color.primaryColor.opacity(0.8),
+                                            lineWidth: 2)
+                                )
+                                .shadow(
+                                    color: Color.black.opacity(0.3), radius: 5,
+                                    x: 0, y: 3
+                                )
+                                .background(
+                                    Color.primaryColor.opacity(0.6)
+                                        .blur(radius: 10)
+                                        .background(.ultraThinMaterial)
+                                )
 
-                           }
-                           .padding(.horizontal, 32)
+                        }
+                        .padding(.horizontal, 32)
                     }
                     Spacer()
                         .frame(height: 50)

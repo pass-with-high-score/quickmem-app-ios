@@ -7,4 +7,5 @@
 
 class AppIcons {
     static let appLogo = "Icons/AppLogo"
+    static let icGoogle = "Icons/Google"
 }

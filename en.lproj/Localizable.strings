@@ -27,3 +27,13 @@
 "carousel_personalized_learning" = "🎯 Personalize your learning journey!";
 "carousel_smart_reminder" = "⏰ Smart daily study reminders!";
 "carousel_progress_tracking" = "📈 Easily track your learning progress!";
+
+// Login
+"login_title" = "Login";
+"login_subtitle" = "Great to see you again! Login to continue";
+"login_with_email" = "Login with email";
+"login_with_google" = "Login with Google";
+"login_with_apple" = "Login with Apple";
+"login_dont_have_account" = "Don't have an account?";
+"login_signup_button" = "Sign up";
+"login_or" = "or";

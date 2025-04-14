@@ -9,6 +9,6 @@ import SwiftUI
 
 struct GlobalFontModifier: ViewModifier {
     func body(content: Content) -> some View {
-        content.font(.abrilFatfaceRegular(size: 16))
+        content.font(.oswaldVariableFontWght(size: 16))
     }
 }

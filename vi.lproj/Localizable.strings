@@ -28,3 +28,13 @@
 "carousel_smart_reminder" = "⏰ Nhắc nhở học tập thông minh hằng ngày!";
 "carousel_progress_tracking" = "📈 Theo dõi tiến độ học tập dễ dàng!";
 
+// Login
+"login_title" = "Đăng nhập";
+"login_subtitle" = "Rất vui được gặp lại bạn! Hãy đăng nhập để tiếp tục";
+"login_with_email" = "Đăng nhập bằng email";
+"login_with_google" = "Đăng nhập bằng Google";
+"login_with_apple" = "Đăng nhập bằng Apple";
+"login_dont_have_account" = "Chưa có tài khoản?";
+"login_signup_button" = "Đăng ký";
+"login_or" = "hoặc";
+

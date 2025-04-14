@@ -8,4 +8,5 @@ import SwiftUI
 
 extension Color {
     static let premiumColor = Color("PremiumColor")
+    static let primaryColor = Color("PrimaryColor")
 }

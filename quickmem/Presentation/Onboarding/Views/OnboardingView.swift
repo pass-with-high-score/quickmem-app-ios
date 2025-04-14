@@ -30,7 +30,7 @@ struct OnboardingView: View {
             ZStack {
                 
                 LinearGradient(
-                    colors: [Color.accentColor, Color.accentColor.opacity(0.1), Color.white],
+                    colors: [Color.primaryColor, Color.primaryColor.opacity(0.1), Color.white],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
@@ -53,7 +53,7 @@ struct OnboardingView: View {
                     HStack(spacing: 8) {
                         ForEach(0..<pages.count, id: \.self) { index in
                             Circle()
-                                .fill(index == currentPage ? Color.accentColor : Color.gray.opacity(0.4))
+                                .fill(index == currentPage ? Color.primaryColor : Color.gray.opacity(0.4))
                                 .frame(width: index == currentPage ? 12 : 8, height: index == currentPage ? 12 : 8)
                                 .animation(.spring(), value: currentPage)
                         }
@@ -72,7 +72,7 @@ struct OnboardingView: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.white)
                                     .frame(minWidth: 100, maxWidth: 160, minHeight: 50)
-                                    .background(Color.accentColor)
+                                    .background(Color.primaryColor)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 20)
@@ -96,7 +96,7 @@ struct OnboardingView: View {
                                         .fontWeight(.bold)
                                 }
                                 .frame(minWidth: 100, maxWidth: 160, minHeight: 50)
-                                .background(Color.accentColor)
+                                .background(Color.primaryColor)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 20)
@@ -143,7 +143,7 @@ struct OnboardingView: View {
                                     .scaledToFit()
                                     .frame(width: 24, height: 24)
                                     .padding(10)
-                                    .background(Color.accentColor)
+                                    .background(Color.primaryColor)
                                     .clipShape(Circle())
                                     .foregroundStyle(.white)
                             }
