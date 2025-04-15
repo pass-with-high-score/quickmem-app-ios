@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var isLoginWithEmail = false
     var body: some View {
         NavigationStack {
             ZStack {
@@ -32,7 +33,9 @@ struct LoginView: View {
                         icon: Image(systemName: "envelope"),
                         title: String(localized: "login_with_email"),
                         action: {
-                            // email login logic
+                            withAnimation {
+                                isLoginWithEmail.toggle()
+                            }
                         },
                         backgroundColor: .blue
                     )
@@ -91,8 +94,14 @@ struct LoginView: View {
                             .foregroundColor(.white)
                     }
                 }
-                .tint(.white)
-               
+                .navigationDestination(isPresented: $isLoginWithEmail) {
+                    LoginWithEmailView(
+                        viewModel:
+                            DependencyInjection
+                            .provideLoginWithEmailViewModel()
+                    )
+                }
+
             }
         }
     }

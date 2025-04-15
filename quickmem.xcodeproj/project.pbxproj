@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48250C9F2DADE52700BA9BCD /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 48250C9E2DADE52700BA9BCD /* KeychainAccess */; };
 		4868F9A42DAAB2A40091869B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4868F9A22DAAB2A40091869B /* Localizable.strings */; };
 		4868F9AE2DAABDDE0091869B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4868F9AD2DAABDDE0091869B /* Lottie */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4868F9AE2DAABDDE0091869B /* Lottie in Frameworks */,
+				48250C9F2DADE52700BA9BCD /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,7 @@
 			name = quickmem;
 			packageProductDependencies = (
 				4868F9AD2DAABDDE0091869B /* Lottie */,
+				48250C9E2DADE52700BA9BCD /* KeychainAccess */,
 			);
 			productName = quickmem;
 			productReference = 4868F97C2DAA68DD0091869B /* quickmem.app */;
@@ -127,6 +130,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				4868F9AC2DAABDDE0091869B /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				48250C9D2DADE52700BA9BCD /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4868F97D2DAA68DD0091869B /* Products */;
@@ -298,6 +302,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = quickmem/quickmemDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"quickmem/Preview Content\"";
@@ -381,6 +386,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		48250C9D2DADE52700BA9BCD /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4868F9AC2DAABDDE0091869B /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -392,6 +405,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		48250C9E2DADE52700BA9BCD /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48250C9D2DADE52700BA9BCD /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		4868F9AD2DAABDDE0091869B /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4868F9AC2DAABDDE0091869B /* XCRemoteSwiftPackageReference "lottie-spm" */;
