@@ -9,9 +9,11 @@ import Foundation
 
 class OnboardingViewModel : ObservableObject {
     
-    private let dataManager = DataManager.shared
+    private let dataManager = AppManager.shared
     
     func setOnboardedStatus(_ status: Bool) {
-        dataManager.saveOnboardedStatus(status)
+        Task {
+            await dataManager.setOnboardedStatus(status)
+        }
     }
 }

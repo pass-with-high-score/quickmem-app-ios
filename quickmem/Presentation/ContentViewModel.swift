@@ -7,16 +7,30 @@
 
 import SwiftUI
 
-class ContentViewModel : ObservableObject {
-    @Published var isOnboarded: Bool = false
-    
-    private let dataManager = DataManager.shared
-    
+class ContentViewModel: ObservableObject {
+    @Published var appState: AppState = .onboarding
+
+    private let appManager = AppManager.shared
+
     init() {
-           loadUserData()
-       }
-    
+        loadUserData()
+    }
+
     func loadUserData() {
-            isOnboarded = dataManager.getOnboardedStatus() ?? false
+        Task {
+            let onboarded = await appManager.getOnboardedStatus()
+            let loggedIn = await appManager.isUserLoggedIn()
+
+            await MainActor.run {
+                if !onboarded {
+                    self.appState = .onboarding
+                } else if !loggedIn {
+                    self.appState = .login
+                } else {
+                    self.appState = .main
+                }
+            }
         }
+    }
 }
+

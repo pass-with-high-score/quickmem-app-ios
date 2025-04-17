@@ -10,15 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
     var body: some View {
-        if viewModel.isOnboarded {
-               WelcomeView()
-           } else {
-               OnboardingView()
-                   .onAppear {
-                       
-                   }
-           }
-       }
+        switch viewModel.appState {
+        case .onboarding:
+            OnboardingView()
+        case .login:
+            LoginView()
+        case .main:
+            MainTabView()
+        }
+    }
 }
 
 #Preview {
