@@ -31,18 +31,18 @@ struct LoginWithEmailView: View {
                 ).ignoresSafeArea()
 
                 VStack(spacing: 16) {
-                    Spacer().frame(height: 40)
+                    Spacer().frame(height: 120)
 
                     // Input
                     AuthTextField(
-                        placeholder: "Email",
+                        placeholder: "login_email_placeholder".localized,
                         text: $viewModel.email,
                         isSecure: false,
                         icon: "envelope"
                     )
 
                     AuthTextField(
-                        placeholder: "Password",
+                        placeholder: "login_password_placeholder".localized,
                         text: $viewModel.password,
                         isSecure: true,
                         icon: "lock"
@@ -55,7 +55,7 @@ struct LoginWithEmailView: View {
 
                             },
                             label: {
-                                Text("Forgot password?")
+                                Text("login_forgot_password_label")
                                     .underline()
                             }
                         )
@@ -67,7 +67,7 @@ struct LoginWithEmailView: View {
                     // Button
                     AuthButton(
                         icon: nil,
-                        title: String(localized: "Login"),
+                        title: "login_button_label".localized,
                         action: {
                             _ = viewModel.login()
                         },
@@ -75,13 +75,13 @@ struct LoginWithEmailView: View {
                     )
 
                     HStack {
-                        Text("Don't have an account?")
+                        Text("login_dont_have_an_account_label")
                             .font(.headline)
                             .foregroundColor(.primary.opacity(0.8))
                         NavigationLink {
                             SignupView()
                         } label: {
-                            Text("Sign Up")
+                            Text("login_signup_label")
                                 .underline()
                         }
                         .font(.headline)
@@ -91,7 +91,7 @@ struct LoginWithEmailView: View {
                     .font(.footnote)
                     .padding(.bottom, 20)
                     Spacer()
-                    Text("By continuing, you agree to our Terms of Service")
+                    Text("login_term_of_service")
                         .font(.subheadline)
                         .foregroundColor(.appPrimary.opacity(0.8))
                         .underline()
@@ -100,6 +100,19 @@ struct LoginWithEmailView: View {
                 }
                 .padding()
 
+                LoadingOverlayView(isLoading: $viewModel.isLoading)
+
+            }
+            .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
+                Alert(
+                    title: Text("error_title"),
+                    message: Text(viewModel.errorMessage ?? ""),
+                    dismissButton: .default(
+                        Text("OK"),
+                        action: {
+                            viewModel.errorMessage = nil
+                        })
+                )
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {

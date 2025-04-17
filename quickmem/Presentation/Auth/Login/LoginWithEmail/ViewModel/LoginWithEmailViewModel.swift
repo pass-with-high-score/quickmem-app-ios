@@ -41,44 +41,71 @@ class LoginWithEmailViewModel: ObservableObject {
                 return
             }
 
-            // Check if email is empty
             guard !self.email.isEmpty else {
-                self.errorMessage = "Email không được để trống"
+                let message = "error_email_empty".localized
+                self.errorMessage = message
                 promise(
                     .failure(
                         NSError(
-                            domain: "LoginWithEmailViewModel",
-                            code: -1,
+                            domain: "LoginWithEmailViewModel", code: -1,
                             userInfo: [
-                                NSLocalizedDescriptionKey:
-                                    "Email không được để trống"
+                                NSLocalizedDescriptionKey: message
                             ]
                         )
-                    )
-                )
+                    ))
                 return
             }
+            
+            guard self.email.isValidEmail() else {
+                        let message = "error_invalid_email".localized
+                        self.errorMessage = message
+                        promise(
+                            .failure(
+                                NSError(
+                                    domain: "LoginWithEmailViewModel", code: -1,
+                                    userInfo: [
+                                        NSLocalizedDescriptionKey: message
+                                    ]
+                                )
+                            )
+                        )
+                        return
+                    }
 
-            // Check if password is empty
             guard !self.password.isEmpty else {
-                self.errorMessage = "Mật khẩu không được để trống"
+                let message = "error_password_empty".localized
+                self.errorMessage = message
                 promise(
                     .failure(
                         NSError(
-                            domain: "LoginWithEmailViewModel",
-                            code: -1,
+                            domain: "LoginWithEmailViewModel", code: -1,
                             userInfo: [
-                                NSLocalizedDescriptionKey:
-                                    "Mật khẩu không được để trống"
+                                NSLocalizedDescriptionKey: message
                             ]
                         )
-                    )
-                )
+                    ))
                 return
             }
+            
+            guard self.password.isValidPassword() else {
+                       let message = "error_password_invalid".localized
+                       self.errorMessage = message
+                       promise(
+                           .failure(
+                               NSError(
+                                   domain: "LoginWithEmailViewModel", code: -1,
+                                   userInfo: [
+                                       NSLocalizedDescriptionKey: message
+                                   ]
+                               )
+                           )
+                       )
+                       return
+                   }
 
             // Set loading state
             self.isLoading = true
+            defer { self.isLoading = false }
 
             // Attempt to login
             Task {
@@ -109,10 +136,14 @@ class LoginWithEmailViewModel: ObservableObject {
 
                     promise(.success(response))
                 } catch {
+
                     await MainActor.run {
                         self.isLoading = false
-                        self.errorMessage =
-                            "Đăng nhập thất bại: \(error.localizedDescription)"
+                        if let apiError = error as? APIError {
+                            self.errorMessage =
+                                apiError.localizedDescription.toLocalizationKey
+                                .localized
+                        }
                     }
                     promise(.failure(error))
                 }

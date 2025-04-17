@@ -66,7 +66,8 @@ class QMAPIClient: QMAPIService {
         method: HTTPMethod = .get,
         body: T? = nil
     ) async throws -> U {
-        let urlString = baseURL.hasSuffix("/") ? baseURL + path : baseURL + "/" + path
+        let urlString =
+            baseURL.hasSuffix("/") ? baseURL + path : baseURL + "/" + path
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
@@ -115,13 +116,30 @@ class QMAPIClient: QMAPIService {
                 throw error
             }
         case 400..<500:
+            var message: String? = nil
+
+            if let json = try? JSONSerialization.jsonObject(with: data)
+                as? [String: Any]
+            {
+                if let messages = json["message"] as? [String] {
+                    message = messages.joined(separator: ", ")
+                } else if let singleMessage = json["message"] as? String {
+                    message = singleMessage
+                }
+            }
+
             print(
                 """
                 \n❌ 🚫 ========== [CLIENT ERROR] ==========
                 🔢 [Status Code] \(httpResponse.statusCode)
                 📄 [Data] \(jsonString)
                 """)
-            throw APIError.clientError(statusCode: httpResponse.statusCode)
+
+            throw APIError.clientError(
+                statusCode: httpResponse.statusCode,
+                message: message
+            )
+
         case 500..<600:
             print(
                 """
@@ -151,7 +169,8 @@ class QMAPIClient: QMAPIService {
             throw APIError.unauthorized
         }
 
-        let urlString = baseURL.hasSuffix("/") ? baseURL + path : baseURL + "/" + path
+        let urlString =
+            baseURL.hasSuffix("/") ? baseURL + path : baseURL + "/" + path
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
@@ -216,16 +235,31 @@ class QMAPIClient: QMAPIService {
                 retryOnUnauthorized: false
             )
         case 400..<500:
+            var message: String? = nil
+
+            if let json = try? JSONSerialization.jsonObject(with: data)
+                as? [String: Any]
+            {
+                if let messages = json["message"] as? [String] {
+                    message = messages.joined(separator: ", ")
+                } else if let singleMessage = json["message"] as? String {
+                    message = singleMessage
+                }
+            }
 
             print(
                 """
-                \n🔐 ❌ 🚫 ========== [CLIENT ERROR - AUTH] ==========
+                \n❌ 🚫 ========== [CLIENT ERROR] ==========
                 🔢 [Status Code] \(httpResponse.statusCode)
                 📄 [Data] \(jsonString)
                 """)
-            
-            throw APIError.clientError(statusCode: httpResponse.statusCode)
+
+            throw APIError.clientError(
+                statusCode: httpResponse.statusCode,
+                message: message
+            )
         case 500..<600:
+
             print(
                 """
                 \n🔐 ❌ 🔥 ========== [SERVER ERROR - AUTH] ==========

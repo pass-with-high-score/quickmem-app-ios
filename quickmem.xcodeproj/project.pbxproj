@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		48250C9F2DADE52700BA9BCD /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 48250C9E2DADE52700BA9BCD /* KeychainAccess */; };
-		4868F9A42DAAB2A40091869B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4868F9A22DAAB2A40091869B /* Localizable.strings */; };
 		4868F9AE2DAABDDE0091869B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4868F9AD2DAABDDE0091869B /* Lottie */; };
+		48C0235E2DB0F219002C6F36 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 48C0235D2DB0F219002C6F36 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4868F97C2DAA68DD0091869B /* quickmem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quickmem.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4868F9A32DAAB2A40091869B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4868F9A52DAAB2EE0091869B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		48C0235D2DB0F219002C6F36 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -61,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				4868F9EE2DAB5DAD0091869B /* Resources */,
-				4868F9A22DAAB2A40091869B /* Localizable.strings */,
+				48C0235D2DB0F219002C6F36 /* Localizable.xcstrings */,
 				4868F97E2DAA68DD0091869B /* quickmem */,
 				4868F97D2DAA68DD0091869B /* Products */,
 			);
@@ -147,7 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4868F9A42DAAB2A40091869B /* Localizable.strings in Resources */,
+				48C0235E2DB0F219002C6F36 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,18 +161,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4868F9A22DAAB2A40091869B /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4868F9A32DAAB2A40091869B /* en */,
-				4868F9A52DAAB2EE0091869B /* vi */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4868F9882DAA68E00091869B /* Debug */ = {
@@ -236,6 +223,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -293,6 +281,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
