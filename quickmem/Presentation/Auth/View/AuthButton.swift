@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AuthButton: View {
-    let icon: Image
+    let icon: Image?
     let title: String
     let action: () -> Void
     var backgroundColor: Color = .blue
@@ -17,11 +17,12 @@ struct AuthButton: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 16) {
-                icon
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 24, height: 24)
-
+                if let icon = icon {
+                    icon
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24)
+                }
                 Text(title)
                     .fontWeight(.bold)
             }
@@ -29,12 +30,15 @@ struct AuthButton: View {
             .frame(maxWidth: .infinity)
             .background(backgroundColor)
             .foregroundColor(foregroundColor)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+
         }
-        .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.white.opacity(0.5), lineWidth: 2)
-        }
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(
+                    Color.gray.opacity(0.1),
+                    lineWidth: 2)
+        )
         .padding(.horizontal, 32)
     }
 }

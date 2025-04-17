@@ -10,7 +10,12 @@ import Foundation
 import SwiftUI
 
 class LoginWithEmailViewModel: ObservableObject {
-    @Published var state = LoginWithEmailState()
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var authProvider: AuthProvider = .email
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
+    @Published var isLoggedIn: Bool = false
 
     private let authRepository: AuthRepository
 
@@ -26,7 +31,10 @@ class LoginWithEmailViewModel: ObservableObject {
                         NSError(
                             domain: "LoginWithEmailViewModel",
                             code: -1,
-                            userInfo: [NSLocalizedDescriptionKey: "ViewModel already deallocated"]
+                            userInfo: [
+                                NSLocalizedDescriptionKey:
+                                    "ViewModel already deallocated"
+                            ]
                         )
                     )
                 )
@@ -34,14 +42,17 @@ class LoginWithEmailViewModel: ObservableObject {
             }
 
             // Check if email is empty
-            guard !self.state.email.isEmpty else {
-                self.state.errorMessage = "Email không được để trống"
+            guard !self.email.isEmpty else {
+                self.errorMessage = "Email không được để trống"
                 promise(
                     .failure(
                         NSError(
                             domain: "LoginWithEmailViewModel",
                             code: -1,
-                            userInfo: [NSLocalizedDescriptionKey: "Email không được để trống"]
+                            userInfo: [
+                                NSLocalizedDescriptionKey:
+                                    "Email không được để trống"
+                            ]
                         )
                     )
                 )
@@ -49,14 +60,17 @@ class LoginWithEmailViewModel: ObservableObject {
             }
 
             // Check if password is empty
-            guard !self.state.password.isEmpty else {
-                self.state.errorMessage = "Mật khẩu không được để trống"
+            guard !self.password.isEmpty else {
+                self.errorMessage = "Mật khẩu không được để trống"
                 promise(
                     .failure(
                         NSError(
                             domain: "LoginWithEmailViewModel",
                             code: -1,
-                            userInfo: [NSLocalizedDescriptionKey: "Mật khẩu không được để trống"]
+                            userInfo: [
+                                NSLocalizedDescriptionKey:
+                                    "Mật khẩu không được để trống"
+                            ]
                         )
                     )
                 )
@@ -64,35 +78,46 @@ class LoginWithEmailViewModel: ObservableObject {
             }
 
             // Set loading state
-            self.state.isLoading = true
+            self.isLoading = true
 
             // Attempt to login
             Task {
                 do {
-                    // Call the login use case or repository method (replace this with your actual login call)
                     let loginRequest = LoginRequestEntity(
-                        email: self.state.email,
-                        password: self.state.password,
-                        provider: self.state.authProvider
+                        email: self.email,
+                        password: self.password,
+                        provider: self.authProvider
                     )
                     let response = try await self.authRepository.loginWithEmail(
                         loginRequest: loginRequest
                     )
 
-                    // If successful, update state and return the result
+                    await TokenManager.shared.updateTokens(
+                        access: response.accessToken,
+                        refresh: response.refreshToken
+                    )
+                    await AppManager.shared.setUserLoggedIn(true)
+                    await AppManager.shared.setUserId(response.id)
+                    await AppManager.shared.setEmail(response.email)
+                    await AppManager.shared.setFullName(response.fullName)
+                    await AppManager.shared.setUsername(response.username)
+
                     await MainActor.run {
-                        self.state.isLoading = false
-                        promise(.success(response))
+                        self.isLoading = false
+                        self.isLoggedIn = true
                     }
+
+                    promise(.success(response))
                 } catch {
-                    // If an error occurs, update state and return the error
                     await MainActor.run {
-                        self.state.isLoading = false
-                        self.state.errorMessage = "Đăng nhập thất bại: \(error.localizedDescription)"
-                        promise(.failure(error))
+                        self.isLoading = false
+                        self.errorMessage =
+                            "Đăng nhập thất bại: \(error.localizedDescription)"
                     }
+                    promise(.failure(error))
                 }
             }
+
         }
     }
 

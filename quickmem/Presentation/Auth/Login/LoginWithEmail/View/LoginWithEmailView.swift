@@ -17,34 +17,108 @@ struct LoginWithEmailView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+
                 LinearGradient(
                     colors: [
-                        Color.primaryColor, Color.primaryColor.opacity(0.3),
+                        Color.primaryColor.opacity(0.3),
+                        Color.white,
+                        Color.white,
+                        Color.white,
                         Color.white,
                     ],
-                    startPoint: .topLeading,
+                    startPoint: .topTrailing,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
 
-                VStack {
-                    TextField("Email", text: $viewModel.state.email)
-                        .textFieldStyle(.roundedBorder)
-                    SecureField("Password", text: $viewModel.state.password)
-                        .textFieldStyle(.roundedBorder)
+                VStack(spacing: 16) {
+                    Spacer().frame(height: 40)
 
-                    if viewModel.state.isLoading {
-                        ProgressView()
+                    // Input
+                    AuthTextField(
+                        placeholder: "Email",
+                        text: $viewModel.email,
+                        isSecure: false,
+                        icon: "envelope"
+                    )
+
+                    AuthTextField(
+                        placeholder: "Password",
+                        text: $viewModel.password,
+                        isSecure: true,
+                        icon: "lock"
+                    )
+
+                    HStack {
+                        Spacer()
+                        Button(
+                            action: {
+
+                            },
+                            label: {
+                                Text("Forgot password?")
+                                    .underline()
+                            }
+                        )
+                        .font(.subheadline)
+                        .foregroundColor(.appPrimary.opacity(0.8))
+                        .padding(.trailing)
                     }
 
-                    if let error = viewModel.state.errorMessage {
-                        Text(error).foregroundColor(.red)
-                    }
+                    // Button
+                    AuthButton(
+                        icon: nil,
+                        title: String(localized: "Login"),
+                        action: {
+                            _ = viewModel.login()
+                        },
+                        backgroundColor: .primaryColor
+                    )
 
-                    Button("Login") {
-                        viewModel.login()
+                    HStack {
+                        Text("Don't have an account?")
+                            .font(.headline)
+                            .foregroundColor(.primary.opacity(0.8))
+                        NavigationLink {
+                            SignupView()
+                        } label: {
+                            Text("Sign Up")
+                                .underline()
+                        }
+                        .font(.headline)
+                        .foregroundColor(.appPrimary)
+                        .bold()
                     }
+                    .font(.footnote)
+                    .padding(.bottom, 20)
+                    Spacer()
+                    Text("By continuing, you agree to our Terms of Service")
+                        .font(.subheadline)
+                        .foregroundColor(.appPrimary.opacity(0.8))
+                        .underline()
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
                 }
                 .padding()
+
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack(spacing: 10) {
+                        Text("login_title")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.appPrimary)
+                        Image(systemName: "brain.head.profile")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .fontWeight(.bold)
+                            .foregroundColor(.appPrimary)
+                    }
+                }
+            }
+            .navigationDestination(isPresented: $viewModel.isLoggedIn) {
+                HomeView()
             }
         }
     }

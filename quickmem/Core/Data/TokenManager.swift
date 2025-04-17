@@ -11,21 +11,26 @@ actor TokenManager {
     static let shared = TokenManager()
     private let keychain = Keychain(service: "com.quickmem.app")
 
+    private enum AppKeychainKey {
+        static let accessToken = "accessToken"
+        static let refreshToken = "refreshToken"
+    }
+
     var accessToken: String? {
-        try? keychain.get("accessToken")
+        try? keychain.get(AppKeychainKey.accessToken)
     }
 
     var refreshToken: String? {
-        try? keychain.get("refreshToken")
+        try? keychain.get(AppKeychainKey.refreshToken)
     }
 
     func updateTokens(access: String, refresh: String) {
-        try? keychain.set(access, key: "accessToken")
-        try? keychain.set(refresh, key: "refreshToken")
+        try? keychain.set(access, key: AppKeychainKey.accessToken)
+        try? keychain.set(refresh, key: AppKeychainKey.refreshToken)
     }
 
     func clearTokens() {
-        try? keychain.remove("accessToken")
-        try? keychain.remove("refreshToken")
+        try? keychain.remove(AppKeychainKey.accessToken)
+        try? keychain.remove(AppKeychainKey.refreshToken)
     }
 }

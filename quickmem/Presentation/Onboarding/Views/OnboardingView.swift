@@ -36,10 +36,13 @@ struct OnboardingView: View {
 
                 LinearGradient(
                     colors: [
-                        Color.primaryColor, Color.primaryColor.opacity(0.3),
+                        Color.primaryColor.opacity(0.3),
+                        Color.white,
+                        Color.white,
+                        Color.white,
                         Color.white,
                     ],
-                    startPoint: .topLeading,
+                    startPoint: .topTrailing,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
 
@@ -179,7 +182,7 @@ struct OnboardingView: View {
 
                             Text("app_name")
                                 .font(.headline)
-                                .foregroundStyle(Color.white)
+                                .foregroundStyle(Color.primaryColor)
                         }
                     }
 

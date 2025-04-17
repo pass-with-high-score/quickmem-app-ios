@@ -15,10 +15,13 @@ struct WelcomeView: View {
             ZStack {
                 LinearGradient(
                     colors: [
-                        Color.primaryColor, Color.primaryColor.opacity(0.3),
+                        Color.primaryColor.opacity(0.3),
+                        Color.white,
+                        Color.white,
+                        Color.white,
                         Color.white,
                     ],
-                    startPoint: .topLeading,
+                    startPoint: .topTrailing,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
                 VStack {
@@ -35,7 +38,9 @@ struct WelcomeView: View {
                         .foregroundStyle(
                             LinearGradient(
                                 colors: [
-                                    Color.white, Color.white.opacity(0.7),
+                                    Color.primaryColor,
+                                    Color.primaryColor
+                                        .opacity(0.7),
                                 ],
                                 startPoint: .top,
                                 endPoint: .bottom
@@ -43,7 +48,7 @@ struct WelcomeView: View {
                         )
 
                     (Text("all_tools_title")
-                        .foregroundColor(.white)
+
                         .font(.title3)
                         .fontWeight(.semibold)
                         + Text("in_one_app")
@@ -83,11 +88,6 @@ struct WelcomeView: View {
                                     color: Color.black.opacity(0.3), radius: 5,
                                     x: 0, y: 3
                                 )
-                                .background(
-                                    Color.white.opacity(0.6)
-                                        .blur(radius: 10)
-                                        .background(.ultraThinMaterial)
-                                )
 
                         }
                         .padding(.horizontal, 32)
@@ -113,11 +113,6 @@ struct WelcomeView: View {
                                 .shadow(
                                     color: Color.black.opacity(0.3), radius: 5,
                                     x: 0, y: 3
-                                )
-                                .background(
-                                    Color.primaryColor.opacity(0.6)
-                                        .blur(radius: 10)
-                                        .background(.ultraThinMaterial)
                                 )
 
                         }

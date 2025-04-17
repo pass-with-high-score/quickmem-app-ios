@@ -22,7 +22,6 @@ struct VerticalTextCarousel: View {
             ForEach(texts.indices, id: \.self) { index in
                 Text(texts[index])
                     .font(.headline)
-                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .padding(.horizontal, 32)

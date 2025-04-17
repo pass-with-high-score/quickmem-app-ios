@@ -14,10 +14,13 @@ struct LoginView: View {
             ZStack {
                 LinearGradient(
                     colors: [
-                        Color.primaryColor, Color.primaryColor.opacity(0.3),
+                        Color.primaryColor.opacity(0.3),
+                        Color.white,
+                        Color.white,
+                        Color.white,
                         Color.white,
                     ],
-                    startPoint: .topLeading,
+                    startPoint: .topTrailing,
                     endPoint: .bottomTrailing
                 ).ignoresSafeArea()
                 VStack(spacing: 16) {
@@ -25,10 +28,11 @@ struct LoginView: View {
                         .frame(height: 32)
                     Text("login_subtitle")
                         .font(.body)
-                        .foregroundColor(.white)
+
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
-                    Spacer()
+                        .padding(.bottom, 200)
+
                     AuthButton(
                         icon: Image(systemName: "envelope"),
                         title: String(localized: "login_with_email"),
@@ -43,16 +47,16 @@ struct LoginView: View {
                     HStack {
                         Divider()
                             .frame(width: 100, height: 1)
-                            .background(Color.white)
+                            .background(Color.gray.opacity(0.5))
 
                         Text("login_or")
-                            .foregroundColor(.white)
+                            .foregroundColor(.primaryColor)
                             .padding(.horizontal, 32)
                             .padding(.vertical, 8)
 
                         Divider()
                             .frame(width: 100, height: 1)
-                            .background(Color.white)
+                            .background(Color.gray.opacity(0.5))
                     }
 
                     AuthButton(
@@ -91,7 +95,7 @@ struct LoginView: View {
                         Text("login_title")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primaryColor)
                     }
                 }
                 .navigationDestination(isPresented: $isLoginWithEmail) {
