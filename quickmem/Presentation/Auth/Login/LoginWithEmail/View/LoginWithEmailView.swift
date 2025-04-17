@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginWithEmailView: View {
     @StateObject var viewModel: LoginWithEmailViewModel
+    @EnvironmentObject var contentViewModel: ContentViewModel
 
     init(viewModel: LoginWithEmailViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -130,8 +131,10 @@ struct LoginWithEmailView: View {
                     }
                 }
             }
-            .navigationDestination(isPresented: $viewModel.isLoggedIn) {
-                HomeView()
+            .onChange(of: viewModel.isLoggedIn) { isLoggedIn in
+                if isLoggedIn {
+                    contentViewModel.appState = .main
+                }
             }
         }
     }
@@ -143,4 +146,5 @@ struct LoginWithEmailView: View {
             authRepository: DependencyInjection.provideAuthRepository()
         )
     )
+    .environmentObject(ContentViewModel())
 }

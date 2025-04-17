@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LibraryView: View {
+    @StateObject var viewModel = LibraryViewModel()
     var body: some View {
         Text("Library")
     }

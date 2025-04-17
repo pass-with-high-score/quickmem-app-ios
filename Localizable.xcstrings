@@ -627,6 +627,9 @@
         }
       }
     },
+    "Logout" : {
+
+    },
     "next_button" : {
       "localizations" : {
         "en" : {

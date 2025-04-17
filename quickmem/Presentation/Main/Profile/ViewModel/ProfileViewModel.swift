@@ -8,4 +8,11 @@ import Foundation
 
 class ProfileViewModel: ObservableObject {
     
+    func logout() {
+        Task {
+            await AppManager.shared.clearUserData()
+            await TokenManager.shared.clearTokens()
+        }
+    }
+    
 }

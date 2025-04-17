@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var viewModel = HomeViewModel()
+    @EnvironmentObject var contentViewModel: ContentViewModel
+    
     var body: some View {
         Text("Home")
     }
@@ -15,4 +18,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(ContentViewModel())
 }

@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject var viewModel = ProfileViewModel()
+    @EnvironmentObject var contentViewModel: ContentViewModel
+    
     var body: some View {
-        Text("Profile")
+        Button("Logout") {
+            viewModel.logout()
+            contentViewModel.appState = .login
+        }
     }
 }
 
 #Preview {
     ProfileView()
+        .environmentObject(ContentViewModel())
 }

@@ -13,10 +13,13 @@ struct ContentView: View {
         switch viewModel.appState {
         case .onboarding:
             OnboardingView()
+                .environmentObject(viewModel)
         case .login:
             LoginView()
+                .environmentObject(viewModel)
         case .main:
             MainTabView()
+                .environmentObject(viewModel)
         }
     }
 }
