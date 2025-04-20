@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SignupWithEmailView: View {
     var body: some View {
-        Text("SignupWithEmailView")
+        Text("Sign up With Email View")
     }
 }
 

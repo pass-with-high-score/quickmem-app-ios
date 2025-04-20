@@ -98,6 +98,7 @@ struct SignupView: View {
                             Text("signup_already_have_an_account")
                             Text("signup_login_button")
                                 .underline()
+                                .font(.body)
                                 .fontWeight(.bold)
                                 .foregroundColor(.blue)
                         }

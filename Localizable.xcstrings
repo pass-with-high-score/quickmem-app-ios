@@ -674,6 +674,9 @@
     "Profile" : {
 
     },
+    "Sign up With Email View" : {
+
+    },
     "Signup" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -699,6 +702,12 @@
             "state" : "translated",
             "value" : "Already have an account?"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã có tài khoản?"
+          }
         }
       }
     },
@@ -709,6 +718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " and the "
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " và "
           }
         }
       }
@@ -721,6 +736,12 @@
             "state" : "translated",
             "value" : "By signing up, you agree to the "
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bằng cách đăng ký, bạn đồng ý với "
+          }
         }
       }
     },
@@ -731,6 +752,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Login"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng nhập"
           }
         }
       }
@@ -743,6 +770,12 @@
             "state" : "translated",
             "value" : " of QuickMem."
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "của QuickMem."
+          }
         }
       }
     },
@@ -753,6 +786,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacy Policy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chính sách Bảo mật "
           }
         }
       }
@@ -781,6 +820,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terms and Conditions"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điều khoản và điều kiện "
           }
         }
       }
@@ -814,13 +859,10 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đăng ký với email"
+            "value" : "Đăng ký bằng email"
           }
         }
       }
-    },
-    "SignupWithEmailView" : {
-
     },
     "skip_button" : {
       "localizations" : {
