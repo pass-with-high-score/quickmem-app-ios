@@ -330,6 +330,15 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Key 1" : {
+      "extractionState" : "manual"
+    },
+    "Key 2" : {
+      "extractionState" : "manual"
+    },
     "learn_desc" : {
       "localizations" : {
         "en" : {
@@ -665,7 +674,11 @@
     "Profile" : {
 
     },
+    "Sign up With Email View" : {
+
+    },
     "Signup" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -677,6 +690,176 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đăng ký"
+          }
+        }
+      }
+    },
+    "signup_already_have_an_account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already have an account?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã có tài khoản?"
+          }
+        }
+      }
+    },
+    "signup_and_the" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " and the "
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " và "
+          }
+        }
+      }
+    },
+    "signup_by_signing_up_you_agree_to_the" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By signing up, you agree to the "
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bằng cách đăng ký, bạn đồng ý với "
+          }
+        }
+      }
+    },
+    "signup_login_button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng nhập"
+          }
+        }
+      }
+    },
+    "signup_of_quickmem" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " of QuickMem."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "của QuickMem."
+          }
+        }
+      }
+    },
+    "signup_privacy_policy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chính sách Bảo mật "
+          }
+        }
+      }
+    },
+    "signup_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello there! Let’s get started."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xin chào! chúng ta hãy bắt đầu."
+          }
+        }
+      }
+    },
+    "signup_terms_and_conditions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms and Conditions"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điều khoản và điều kiện "
+          }
+        }
+      }
+    },
+    "signup_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Up"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng ký"
+          }
+        }
+      }
+    },
+    "signup_with_email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signup with email"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng ký bằng email"
           }
         }
       }
